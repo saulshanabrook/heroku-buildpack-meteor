@@ -11,8 +11,9 @@ fetch_meteor() {
     return
   fi
 
-  eval $(curl install.meteor.com | grep '^VERSION=')
-  PACKAGE=meteor_${VERSION}-1_amd64.deb
+  #eval $(curl install.meteor.com | grep '^VERSION=')
+  #PACKAGE=meteor_${VERSION}-1_amd64.deb
+  PACKAGE=meteor_0.6.0-1_amd64.deb
 
   echo "Fetching meteor deb package"
   curl -o "$CACHE_DIR/$PACKAGE" "http://d3sqy0vbqsdhku.cloudfront.net/${PACKAGE}"
