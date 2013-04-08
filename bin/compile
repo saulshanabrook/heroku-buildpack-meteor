@@ -2,8 +2,8 @@
 
 BUILD_DIR=$1
 CACHE_DIR=$2
-METEOR_HOME=$BUILD_DIR/.meteor
-PATH=$METEOR_HOME/tools/latest/bin:$PATH
+METEOR_HOME=$BUILD_DIR/.meteor/local
+PATH=$METEOR_HOME:$PATH
 
 fetch_meteor() {
   if [ -f "$METEOR_HOME/tools/latest/bin/meteor" ] ; then
@@ -13,10 +13,10 @@ fetch_meteor() {
 
   #eval $(curl install.meteor.com | grep '^VERSION=')
   #PACKAGE=meteor_${VERSION}-1_amd64.deb
-  PACKAGE=meteor_0.6.0-1_amd64.deb
+  PACKAGE=meteor_0.6.0.tar.gz
 
-  echo "Fetching meteor deb package"
-  curl -o "$CACHE_DIR/$PACKAGE" "http://d3sqy0vbqsdhku.cloudfront.net/${PACKAGE}"
+  echo "Fetching meteor tarball"
+  curl -o "$CACHE_DIR/$PACKAGE" "https://d3fm2vapipm3k9.cloudfront.net/bootstrap/0.6.0/meteor-bootstrap-Linux_x86_64.tar.gz"
 
   echo "Unpacking meteor"
   [ ! -d "$METEOR_HOME" ] && mkdir -p "$METEOR_HOME"
