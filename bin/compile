@@ -3,12 +3,14 @@
 BUILD_DIR=$1
 CACHE_DIR=$2
 METEOR_HOME=$BUILD_DIR/.meteor
-PATH=$METEOR_HOME:$METEOR_HOME/tools/latest:$PATH
+PATH=$METEOR_HOME:$PATH
 
 install_meteor() {
   echo "Installing meteor"
   curl https://install.meteor.com | /bin/sh
-  ls -lah '.meteor'
+  echo "Do we have meteor?"
+  meteor --version
+  echo $PWD
 }
 
 build() {
