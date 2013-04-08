@@ -25,6 +25,7 @@ build() {
   ( 
     cd $BUILD_DIR
     echo "Building meteor bundle"
+    echo $PWD
     launch-meteor --release 0.6.0 bundle $CACHE_DIR/bundle.tar.gz 
     mkdir -p $BUILD_DIR/.meteor/local/build
     tar -zxf $CACHE_DIR/bundle.tar.gz --strip-components 1 -C $BUILD_DIR/.meteor/local/build
