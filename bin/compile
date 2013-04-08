@@ -3,7 +3,7 @@
 BUILD_DIR=$1
 CACHE_DIR=$2
 METEOR_HOME=$BUILD_DIR/.meteor
-PATH=$METEOR_HOME:$PATH
+PATH=$METEOR_HOME:$METEOR_HOME/tools/latest:$PATH
 
 fetch_meteor() {
   if [ -f "$METEOR_HOME/meteor" ] ; then
@@ -25,7 +25,7 @@ build() {
   ( 
     cd $BUILD_DIR
     echo "Building meteor bundle"
-    meteor --release 0.6.0 bundle $CACHE_DIR/bundle.tar.gz 
+    launch-meteor --release 0.6.0 bundle $CACHE_DIR/bundle.tar.gz 
     mkdir -p $BUILD_DIR/.meteor/local/build
     tar -zxf $CACHE_DIR/bundle.tar.gz --strip-components 1 -C $BUILD_DIR/.meteor/local/build
     rm $CACHE_DIR/bundle.tar.gz
