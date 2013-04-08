@@ -3,16 +3,14 @@
 BUILD_DIR=$1
 CACHE_DIR=$2
 METEOR_HOME=$BUILD_DIR/.meteor/local
-PATH=$METEOR_HOME:$PATH
+PATH=$METEOR_HOME/.meteor:$PATH
 
 fetch_meteor() {
-  if [ -f "$METEOR_HOME/tools/latest/bin/meteor" ] ; then
+  if [ -f "$METEOR_HOME/.meteor/meteor" ] ; then
     # Skip if meteor is already fetched
     return
   fi
 
-  #eval $(curl install.meteor.com | grep '^VERSION=')
-  #PACKAGE=meteor_${VERSION}-1_amd64.deb
   PACKAGE=meteor_0.6.0.tar.gz
 
   echo "Fetching meteor tarball"
