@@ -2,11 +2,11 @@
 
 BUILD_DIR=$1
 CACHE_DIR=$2
-METEOR_HOME=$BUILD_DIR/.meteor/local
-PATH=$METEOR_HOME/.meteor:$PATH
+METEOR_HOME=$BUILD_DIR/.meteor
+PATH=$METEOR_HOME:$PATH
 
 fetch_meteor() {
-  if [ -f "$METEOR_HOME/.meteor/meteor" ] ; then
+  if [ -f "$METEOR_HOME/meteor" ] ; then
     # Skip if meteor is already fetched
     return
   fi
@@ -18,7 +18,7 @@ fetch_meteor() {
 
   echo "Unpacking meteor"
   [ ! -d "$METEOR_HOME" ] && mkdir -p "$METEOR_HOME"
-  tar -C "$METEOR_HOME" -zxf "$CACHE_DIR/$PACKAGE"
+  tar -C "$BUILD_DIR" -zxf "$CACHE_DIR/$PACKAGE"
 }
 
 build() {
