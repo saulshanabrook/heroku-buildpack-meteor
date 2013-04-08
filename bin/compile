@@ -9,7 +9,7 @@ install_meteor() {
   cd $CACHE_DIR
   echo "Installing meteor"
   curl https://install.meteor.com | /bin/sh
-  ls -l .meteor
+  ls -l .
 }
 
 build() {
