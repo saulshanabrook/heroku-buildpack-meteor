@@ -3,10 +3,10 @@
 BUILD_DIR=$1
 CACHE_DIR=$2
 METEOR_HOME=$BUILD_DIR/.meteor
-PATH=$METEOR_HOME:$PATH
+PATH=$METEOR_HOME/tools/latest/bin:$PATH
 
 fetch_meteor() {
-  if [ -f "$METEOR_HOME/usr/bin/meteor" ] ; then
+  if [ -f "$METEOR_HOME/tools/latest/bin/meteor" ] ; then
     # Skip if meteor is already fetched
     return
   fi
