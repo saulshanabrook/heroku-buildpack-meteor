@@ -6,10 +6,11 @@ METEOR_HOME=$BUILD_DIR/.meteor
 PATH=$METEOR_HOME:$PATH
 
 install_meteor() {
+  cd $CACHE_DIR
   echo "Installing meteor"
   git clone git://github.com/meteor/meteor.git
   echo "Build dir contents"
-  ls -lah $BUILD_DIR
+  ls -lah $CACHE_DIR
   echo "Do we have meteor?"
   #meteor --version
   echo $PWD
