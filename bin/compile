@@ -6,10 +6,9 @@ METEOR_HOME=$BUILD_DIR/.meteor
 PATH=$METEOR_HOME:$METEOR_HOME/tools/latest:$PATH
 
 install_meteor() {
-  cd $CACHE_DIR
   echo "Installing meteor"
   curl https://install.meteor.com | /bin/sh
-  ls -l $CACHE_DIR
+  ls -l $BUILD_DIR/.meteor
 }
 
 build() {
