@@ -2,7 +2,7 @@
 
 BUILD_DIR=$1
 CACHE_DIR=$2
-METEOR_HOME=$BUILD_DIR/.meteor
+METEOR_HOME=$CACHE_DIR/meteor
 PATH=$METEOR_HOME:$PATH
 
 install_meteor() {
@@ -12,7 +12,7 @@ install_meteor() {
   echo "Build dir contents"
   ls -lah $CACHE_DIR
   echo "Do we have meteor?"
-  #meteor --version
+  meteor --version
   echo $PWD
 }
 
