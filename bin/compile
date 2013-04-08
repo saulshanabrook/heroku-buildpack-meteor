@@ -8,7 +8,8 @@ PATH=$METEOR_HOME:$METEOR_HOME/tools/latest:$PATH
 install_meteor() {
   echo "Installing meteor"
   curl https://install.meteor.com | /bin/sh
-  ls -l $BUILD_DIR/.meteor
+  ls -lah $BUILD_DIR
+  ls –lah ~
 }
 
 build() {
