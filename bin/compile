@@ -9,18 +9,18 @@ install_meteor() {
   cd $CACHE_DIR
   echo "Installing meteor"
   git clone git://github.com/meteor/meteor.git
-  echo "Build dir contents"
-  ls -lah $CACHE_DIR
-  echo "Do we have meteor?"
-  meteor --version
-  echo $PWD
+  #echo "Build dir contents"
+  #ls -lah $CACHE_DIR
+  #echo "Do we have meteor?"
+  #meteor bundle 
+  #echo $PWD
 }
 
 build() {
   (
     cd $BUILD_DIR
     echo "Building meteor bundle"
-    launch-meteor --release 0.6.0 bundle $CACHE_DIR/bundle.tar.gz 
+    meteor bundle $CACHE_DIR/bundle.tar.gz
     mkdir -p $BUILD_DIR/.meteor/local/build
     tar -zxf $CACHE_DIR/bundle.tar.gz --strip-components 1 -C $BUILD_DIR/.meteor/local/build
     rm $CACHE_DIR/bundle.tar.gz
@@ -31,7 +31,7 @@ build() {
 [ ! -d $CACHE_DIR ] && mkdir $CACHE_DIR
 
 install_meteor
-#build
+build
 
 echo "Checking for post_compile script"
 if [ -f $BUILD_DIR/bin/post_compile ] ; then
