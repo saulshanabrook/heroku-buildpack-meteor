@@ -5,24 +5,13 @@ CACHE_DIR=$2
 METEOR_HOME=$BUILD_DIR/.meteor
 PATH=$METEOR_HOME:$METEOR_HOME/tools/latest:$PATH
 
-fetch_meteor() {
-  if [ -f "$METEOR_HOME/meteor" ] ; then
-    # Skip if meteor is already fetched
-    return
-  fi
-
-  PACKAGE=meteor_0.6.0.tar.gz
-
-  echo "Fetching meteor tarball"
-  curl -o "$CACHE_DIR/$PACKAGE" "https://d3fm2vapipm3k9.cloudfront.net/bootstrap/0.6.0/meteor-bootstrap-Linux_x86_64.tar.gz"
-
-  echo "Unpacking meteor"
-  [ ! -d "$METEOR_HOME" ] && mkdir -p "$METEOR_HOME"
-  tar -C "$BUILD_DIR" -zxf "$CACHE_DIR/$PACKAGE"
+install_meteor() {
+  echo "Installing meteor"
+  curl https://install.meteor.com | /bin/sh
 }
 
 build() {
-  ( 
+  (
     cd $BUILD_DIR
     echo "Building meteor bundle"
     ls -lah
@@ -36,8 +25,8 @@ build() {
 [ ! -d $BUILD_DIR ] && mkdir $BUILD_DIR
 [ ! -d $CACHE_DIR ] && mkdir $CACHE_DIR
 
-fetch_meteor
-build
+install_meteor
+#build
 
 echo "Checking for post_compile script"
 if [ -f $BUILD_DIR/bin/post_compile ] ; then
