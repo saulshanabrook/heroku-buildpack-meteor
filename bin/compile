@@ -7,9 +7,11 @@ PATH=$METEOR_HOME:$PATH
 
 install_meteor() {
   echo "Installing meteor"
-  curl https://install.meteor.com | /bin/sh
+  git clone git://github.com/meteor/meteor.git
+  echo "Build dir contents"
+  ls -lah $BUILD_DIR
   echo "Do we have meteor?"
-  meteor --version
+  #meteor --version
   echo $PWD
 }
 
@@ -17,7 +19,6 @@ build() {
   (
     cd $BUILD_DIR
     echo "Building meteor bundle"
-    ls -lah
     launch-meteor --release 0.6.0 bundle $CACHE_DIR/bundle.tar.gz 
     mkdir -p $BUILD_DIR/.meteor/local/build
     tar -zxf $CACHE_DIR/bundle.tar.gz --strip-components 1 -C $BUILD_DIR/.meteor/local/build
