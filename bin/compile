@@ -20,7 +20,7 @@ fetch_meteor() {
 
   echo "Unpacking meteor"
   [ ! -d "$METEOR_HOME" ] && mkdir -p "$METEOR_HOME"
-  ar p "$CACHE_DIR/$PACKAGE" data.tar.gz | tar -C "$METEOR_HOME" -zxf -
+  tar -C "$METEOR_HOME" -zxf "$CACHE_DIR/$PACKAGE"
 }
 
 build() {
