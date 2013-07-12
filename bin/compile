@@ -1,3 +1,2 @@
 #!/bin/sh
 curl https://install.meteor.com | /bin/sh
-cp ~/.meteor/tools/latest/launch-meteor /usr/bin/meteor
