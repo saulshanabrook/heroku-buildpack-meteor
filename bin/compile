@@ -7,16 +7,17 @@ PATH=$METEOR_HOME:$PATH
 
 install_meteor() {
   cd $BUILD_DIR
+    echo "Building meteor bundle"
+    echo "in directory $METEOR_DIR"
+    cp -r $BUILD_DIR/$METEOR_DIR/* $BUILD_DIR
+    cp -r $BUILD_DIR/$METEOR_DIR/.meteor/ $BUILD_DIR/.meteor
   echo "Installing meteor"
   git clone git://github.com/meteor/meteor.git $METEOR_HOME
 }
 
 build() {
   (
-    echo "Building meteor bundle"
-    echo "in directory $METEOR_DIR"
-    cp -r $METEOR_DIR/* .
-    cp -r $METEOR_DIR/.meteor/ .meteor
+
     meteor bundle $CACHE_DIR/bundle.tar.gz
     mkdir -p $BUILD_DIR/.meteor/local/build
     tar -zxf $CACHE_DIR/bundle.tar.gz --strip-components 1 -C $BUILD_DIR/.meteor/local/build
